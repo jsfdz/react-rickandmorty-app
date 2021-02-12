@@ -21,18 +21,14 @@ function App() {
 
   return (
     <div className="container">
-
-      <h1>Rick and Morty Api</h1>
-
+      <h1>Rick and Morty Api by DENNCRISS</h1>
       <SearchBox
         onSubmit={handleSubmit}
         onChange={handleQuery}
       />
-
       <LocationContainer
         id={locationID}
       />
-
     </div>
   )
 }
