@@ -1,25 +1,40 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useEffect } from 'react'
+import { SearchBox } from './components/SearchBox'
+import { LocationContainer } from './components/LocationContainer'
+import { getRandomNumber } from './helpers/getRandomNumber'
 
 function App() {
+  const
+    LOCATION_INDEX = 108,
+
+    [query, setQuery] = useState(''),
+    [locationID, setLocationID] = useState(getRandomNumber(LOCATION_INDEX)),
+
+    handleSubmit = (e) => {
+      e.preventDefault()
+      setLocationID(query)
+    },
+
+    handleQuery = (e) => {
+      setQuery(e.target.value)
+    }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="container">
+
+      <h1>Rick and Morty Api</h1>
+
+      <SearchBox
+        onSubmit={handleSubmit}
+        onChange={handleQuery}
+      />
+
+      <LocationContainer
+        id={locationID}
+      />
+
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
