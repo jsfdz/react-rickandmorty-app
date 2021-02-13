@@ -237,6 +237,11 @@
   border-radius: 8px;
   box-shadow: 1px 1px 8px 2px #0000001a;
   outline: none;
+  cursor: pointer;
+}
+
+.pagination button:disabled {
+  cursor: unset;
 }
 
 .pagination button:first-child {
