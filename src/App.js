@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { SearchBox } from './components/SearchBox'
 import { LocationContainer } from './components/LocationContainer'
 import { Svg } from './components/Svg'
+import { Credits } from './components/Credits'
 import { getRandomNumber } from './helpers/getRandomNumber'
 
 function App() {
@@ -36,11 +37,7 @@ function App() {
         />
       </div>
       <div className="credits">
-        <span>JsFdz</span>
-        <em>•</em>
-        <span>DennCriss</span>
-        <em>•</em>
-        <span>The H</span>
+        <Credits />
       </div>
     </>
   )
