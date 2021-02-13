@@ -8,6 +8,8 @@ export const LocationContainer = ({ id }) => {
         [location, setLocation] = useState(null),
         [locationData, setLocationData] = useState({}),
 
+        [page, setPage] = useState(0),
+
         [message, setMessage] = useState(null)
 
     useEffect(() => {
@@ -20,6 +22,7 @@ export const LocationContainer = ({ id }) => {
                 setMessage('this location does not exist')
             })
         setMessage(null)
+        setPage(0)
     }, [id])
 
     useEffect(() => {
@@ -29,7 +32,7 @@ export const LocationContainer = ({ id }) => {
                 type = location.type,
                 dimension = location.dimension,
                 total_residents = location.residents.length,
-                residents = location.residents.map(resident => resident).slice(0, 10)
+                residents = location.residents.map(resident => resident)
 
             const
                 getLocationData = { name, type, dimension, total_residents, residents }
@@ -41,7 +44,13 @@ export const LocationContainer = ({ id }) => {
     const
         { name, type, dimension, total_residents, residents } = locationData,
 
+        maxPage = Math.ceil(total_residents / 5),
+        onNextPage = () => setPage((page + 1) % maxPage),
+        onPrevPage = () => setPage((page - 1) % maxPage),
+
         isResidents = total_residents > 0 ? true : false
+
+    console.log(maxPage)
 
     return (
         <>
@@ -68,7 +77,7 @@ export const LocationContainer = ({ id }) => {
                     <>
                         {isResidents
                             ?
-                            residents.map((resident, index) => {
+                            residents.slice(page * 5, 5 * (page + 1)).map((resident, index) => {
                                 return (
                                     <ResidentContainer
                                         key={index + 1}
@@ -78,6 +87,21 @@ export const LocationContainer = ({ id }) => {
                             })
                             :
                             <p className="message">There are no residents to display at this location</p>
+                        }
+                    </>
+                }
+            </div>
+            <div className="pagination">
+                {message !== null
+                    ?
+                    null
+                    :
+                    <>
+                        {isResidents &&
+                            <>
+                                <button onClick={onPrevPage} disabled={!page}>&lt;Prev</button>
+                                <button onClick={onNextPage} disabled={page === Math.ceil(total_residents / 5) - 1}>Next&gt;</button>
+                            </>
                         }
                     </>
                 }

@@ -222,3 +222,23 @@
 .credits em {
   opacity: 0.3;
 }
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  padding: 20px 0;
+  background: #f1f1f1;
+}
+
+.pagination button {
+  border: 0;
+  background: #fff;
+  padding: 10px 20px;
+  border-radius: 8px;
+  box-shadow: 1px 1px 8px 2px #0000001a;
+  outline: none;
+}
+
+.pagination button:first-child {
+  margin-right: 15px;
+}
