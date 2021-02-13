@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { SearchBox } from './components/SearchBox'
 import { LocationContainer } from './components/LocationContainer'
+import { Svg } from './components/Svg'
 import { getRandomNumber } from './helpers/getRandomNumber'
 
 function App() {
@@ -13,6 +14,7 @@ function App() {
     handleSubmit = (e) => {
       e.preventDefault()
       setLocationID(query)
+      e.target[0].value = ''
     },
 
     handleQuery = (e) => {
@@ -20,16 +22,27 @@ function App() {
     }
 
   return (
-    <div className="container">
-      <h1>Rick and Morty Api by DENNCRISS</h1>
-      <SearchBox
-        onSubmit={handleSubmit}
-        onChange={handleQuery}
-      />
-      <LocationContainer
-        id={locationID}
-      />
-    </div>
+    <>
+      <div className="header-hero" style={{ backgroundImage: 'url(./img/fondo.png)' }}>
+        <SearchBox
+          onSubmit={handleSubmit}
+          onChange={handleQuery}
+        />
+        <Svg />
+      </div>
+      <div className="container">
+        <LocationContainer
+          id={locationID}
+        />
+      </div>
+      <div className="credits">
+        <span>JsFdz</span>
+        <em>•</em>
+        <span>DennCriss</span>
+        <em>•</em>
+        <span>The H</span>
+      </div>
+    </>
   )
 }
 

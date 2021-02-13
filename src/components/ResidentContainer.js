@@ -12,10 +12,6 @@ export const ResidentContainer = ({ url }) => {
             .then(response => response.ok ? response.json() : Promise.reject(response))
             .then(data => {
                 setCharacter(data)
-                console.log(data)
-            })
-            .catch(error => {
-                console.error(error)
             })
     }, [url])
 
@@ -37,7 +33,7 @@ export const ResidentContainer = ({ url }) => {
 
     const { name, image, status, origin, total_episode } = characterData
     return (
-        <>
+        <div className="card">
             <ResidentInfo
                 name={name}
                 image={image}
@@ -45,6 +41,6 @@ export const ResidentContainer = ({ url }) => {
                 origin={origin}
                 episodes={total_episode}
             />
-        </>
+        </div>
     )
 }

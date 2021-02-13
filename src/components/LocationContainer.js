@@ -6,18 +6,20 @@ export const LocationContainer = ({ id }) => {
         BASE = 'https://rickandmortyapi.com/api',
 
         [location, setLocation] = useState(null),
-        [locationData, setLocationData] = useState({})
+        [locationData, setLocationData] = useState({}),
+
+        [message, setMessage] = useState(null)
 
     useEffect(() => {
         fetch(`${BASE}/location/${id}`)
             .then(response => response.ok ? response.json() : Promise.reject(response))
             .then(data => {
                 setLocation(data)
-                console.log(data)
             })
             .catch(error => {
-                console.error(error)
+                setMessage('this location does not exist')
             })
+        setMessage(null)
     }, [id])
 
     useEffect(() => {
@@ -27,38 +29,60 @@ export const LocationContainer = ({ id }) => {
                 type = location.type,
                 dimension = location.dimension,
                 total_residents = location.residents.length,
-                residents = location.residents.map(resident => resident).slice(0, 10)
+                residents = location.residents.map(resident => resident).slice(0, 10),
+                residents_count = residents.length
 
             const
-                getLocationData = { name, type, dimension, total_residents, residents }
+                getLocationData = { name, type, dimension, total_residents, residents, residents_count }
 
             setLocationData(getLocationData)
         }
     }, [location])
 
     const
-        { name, type, dimension, total_residents, residents } = locationData,
+        { name, type, dimension, total_residents, residents, residents_count } = locationData,
 
-        isResidents = residents !== undefined ? true : false
+        isResidents = residents_count > 0 ? true : false
 
     return (
         <>
-            <div>
-                <h2>{name}</h2>
-                <h2>{type}</h2>
-                <h2>{dimension}</h2>
-                <h2>{total_residents}</h2>
+            <div className="location-container">
+                {message !== null
+                    ?
+                    <p className="message">{message}</p>
+                    :
+                    <>
+                        <h2>{name}</h2>
+                        <div className="location-info">
+                            <p><span>Type: </span>{type}</p>
+                            <p><span>Dimension:</span> {dimension}</p>
+                            <p><span>Total residents:</span> {total_residents}</p>
+                        </div>
+                    </>
+                }
             </div>
-            { isResidents &&
-                residents.map((resident, index) => {
-                    return (
-                        <ResidentContainer
-                            key={index + 1}
-                            url={resident}
-                        />
-                    )
-                })
-            }
+            <div className="card-container">
+                {message !== null
+                    ?
+                    null
+                    :
+                    <>
+                        {isResidents
+                            ?
+                            residents.map((resident, index) => {
+                                return (
+                                    <ResidentContainer
+                                        key={index + 1}
+                                        url={resident}
+                                    />
+                                )
+                            })
+                            :
+                            <p className="message">There are no residents to display at this location</p>
+                        }
+                    </>
+                }
+            </div>
         </>
     )
 }
