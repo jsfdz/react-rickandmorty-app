@@ -50,8 +50,6 @@ export const LocationContainer = ({ id }) => {
 
         isResidents = total_residents > 0 ? true : false
 
-    console.log(maxPage)
-
     return (
         <>
             <div className="location-container">
