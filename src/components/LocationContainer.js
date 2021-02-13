@@ -29,20 +29,19 @@ export const LocationContainer = ({ id }) => {
                 type = location.type,
                 dimension = location.dimension,
                 total_residents = location.residents.length,
-                residents = location.residents.map(resident => resident).slice(0, 10),
-                residents_count = residents.length
+                residents = location.residents.map(resident => resident).slice(0, 10)
 
             const
-                getLocationData = { name, type, dimension, total_residents, residents, residents_count }
+                getLocationData = { name, type, dimension, total_residents, residents }
 
             setLocationData(getLocationData)
         }
     }, [location])
 
     const
-        { name, type, dimension, total_residents, residents, residents_count } = locationData,
+        { name, type, dimension, total_residents, residents } = locationData,
 
-        isResidents = residents_count > 0 ? true : false
+        isResidents = total_residents > 0 ? true : false
 
     return (
         <>
