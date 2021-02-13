@@ -1,0 +1,35 @@
+.location-container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  margin: 20px 0;
+  margin-top: 60px;
+  h2 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+  }
+  @media (max-width: 380px) {
+    margin-top: 40px;
+  }
+}
+
+.location-info {
+  text-align: start;
+  display: flex;
+  p {
+    margin: 10px;
+    span {
+      font-weight: 500;
+    }
+  }
+}
+
+@media (max-width: 380px) {
+  .location-info {
+    display: block;
+    p {
+      margin-bottom: 10px;
+    }
+  }
+}

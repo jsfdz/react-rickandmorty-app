@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react'
 import { SearchBox } from './components/SearchBox'
 import { LocationContainer } from './components/LocationContainer'
 import { getRandomNumber } from './helpers/getRandomNumber'
+import {Svg} from './components/Svg'
+import './styles/style.css';
 
 function App() {
   const
@@ -20,16 +22,21 @@ function App() {
     }
 
   return (
-    <div className="container">
-      <h1>Rick and Morty Api by DENNCRISS</h1>
-      <SearchBox
-        onSubmit={handleSubmit}
-        onChange={handleQuery}
-      />
-      <LocationContainer
-        id={locationID}
-      />
-    </div>
+    <>
+      <div className="header-hero">
+        <SearchBox
+          onSubmit={handleSubmit}
+          onChange={handleQuery}
+        />
+        <Svg />
+      </div>
+      <div className="container">
+        <LocationContainer
+          id={locationID}
+        />
+      </div>
+    </>
+
   )
 }
 

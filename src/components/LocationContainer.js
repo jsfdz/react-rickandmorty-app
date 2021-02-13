@@ -43,22 +43,26 @@ export const LocationContainer = ({ id }) => {
 
     return (
         <>
-            <div>
+            <div className="location-container">
                 <h2>{name}</h2>
-                <h2>{type}</h2>
-                <h2>{dimension}</h2>
-                <h2>{total_residents}</h2>
+                <div className="location-info">
+                    <p><span>Type: </span>{type}</p>
+                    <p><span>Dimension:</span> {dimension}</p>
+                    <p><span>Total residents:</span> {total_residents}</p>
+                </div>
             </div>
-            { isResidents &&
-                residents.map((resident, index) => {
-                    return (
-                        <ResidentContainer
-                            key={index + 1}
-                            url={resident}
-                        />
-                    )
-                })
-            }
+            <div className="card-container">
+                { isResidents &&
+                    residents.map((resident, index) => {
+                        return (
+                            <ResidentContainer
+                                key={index + 1}
+                                url={resident}
+                            />
+                        )
+                    })
+                }
+            </div>
         </>
     )
 }
