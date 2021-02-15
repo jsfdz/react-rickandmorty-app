@@ -7,7 +7,7 @@ Este proyecto fue creado por el escuadron de la muerte :)
 Integrantes
 
 - Jesus Fdz
-- Dann Cris
+- Denn Cris
 - The H
 
 Acá el proyecto a su máximo resplandor [https://react-rickandmorty-api.netlify.app/](https://react-rickandmorty-api.netlify.app/).
