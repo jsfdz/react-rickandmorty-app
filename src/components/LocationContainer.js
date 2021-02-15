@@ -48,9 +48,7 @@ export const LocationContainer = ({ id }) => {
 
         maxPage = Math.ceil(total_residents / 5),
         onNextPage = () => setPage((page + 1) % maxPage),
-        onPrevPage = () => setPage((page - 1) % maxPage),
-
-        isResidents = total_residents > 0 ? true : false
+        onPrevPage = () => setPage((page - 1) % maxPage)
 
     return (
         <>
@@ -65,7 +63,7 @@ export const LocationContainer = ({ id }) => {
             <div className="card-container">
                 {!message &&
                     <>
-                        {isResidents
+                        {total_residents > 0
                             ?
                             residents.slice(page * 5, 5 * (page + 1)).map((resident, index) => {
                                 return (
@@ -85,7 +83,6 @@ export const LocationContainer = ({ id }) => {
             <Pagination
                 page={page}
                 message={message}
-                residents={isResidents}
                 onPrevPage={onPrevPage}
                 onNextPage={onNextPage}
                 total_residents={total_residents}
