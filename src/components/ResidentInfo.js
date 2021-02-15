@@ -3,7 +3,7 @@ import React from 'react'
 export const ResidentInfo = ({ name, image, status, origin, episodes }) => {
 
     return (
-        <>
+        <div className="card">
             <div className="resident-avatar">
                 <img src={image} alt={name} />
             </div>
@@ -13,6 +13,6 @@ export const ResidentInfo = ({ name, image, status, origin, episodes }) => {
                 <p>origin: {origin}</p>
                 <p>total episodes: {episodes}</p>
             </div>
-        </>
+        </div>
     )
 }

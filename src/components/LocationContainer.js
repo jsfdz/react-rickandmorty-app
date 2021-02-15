@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react'
+import { LocationInfo } from './LocationInfo'
 import { ResidentContainer } from './ResidentContainer'
+import { Pagination } from './Pagination'
 
 export const LocationContainer = ({ id }) => {
     const
@@ -52,26 +54,16 @@ export const LocationContainer = ({ id }) => {
 
     return (
         <>
-            <div className="location-container">
-                {message !== null
-                    ?
-                    <p className="message">{message}</p>
-                    :
-                    <>
-                        <h2>{name}</h2>
-                        <div className="location-info">
-                            <p><span>Type: </span>{type}</p>
-                            <p><span>Dimension:</span> {dimension}</p>
-                            <p><span>Total residents:</span> {total_residents}</p>
-                        </div>
-                    </>
-                }
-            </div>
+            <LocationInfo
+                name={name}
+                type={type}
+                dimesion={dimension}
+                total_residents={total_residents}
+                message={message}
+            />
+
             <div className="card-container">
-                {message !== null
-                    ?
-                    null
-                    :
+                {!message &&
                     <>
                         {isResidents
                             ?
@@ -89,21 +81,16 @@ export const LocationContainer = ({ id }) => {
                     </>
                 }
             </div>
-            <div className="pagination">
-                {message !== null
-                    ?
-                    null
-                    :
-                    <>
-                        {isResidents &&
-                            <>
-                                <button onClick={onPrevPage} disabled={!page}>&lt;Prev</button>
-                                <button onClick={onNextPage} disabled={page === Math.ceil(total_residents / 5) - 1}>Next&gt;</button>
-                            </>
-                        }
-                    </>
-                }
-            </div>
+
+            <Pagination
+                page={page}
+                message={message}
+                residents={isResidents}
+                onPrevPage={onPrevPage}
+                onNextPage={onNextPage}
+                total_residents={total_residents}
+                maxPage={maxPage}
+            />
         </>
     )
 }

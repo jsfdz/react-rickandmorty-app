@@ -23,6 +23,7 @@
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  background-image: url('assets/img/fondo.png');
   background-size: cover;
   background-position: center;
 }
@@ -224,13 +225,23 @@
 }
 
 .pagination {
-  display: flex;
-  justify-content: center;
   padding: 20px 0;
   background: #f1f1f1;
 }
 
-.pagination button {
+.pagination .index-page {
+  font-size: 14px;
+  text-align: center;
+  font-style: italic;
+  margin: 20px auto;
+}
+
+.pagination .page-buttons {
+  display: flex;
+  justify-content: center;
+}
+
+.pagination .page-buttons button {
   border: 0;
   background: #fff;
   padding: 10px 20px;
@@ -240,10 +251,10 @@
   cursor: pointer;
 }
 
-.pagination button:disabled {
+.pagination .page-buttons button:disabled {
   cursor: unset;
 }
 
-.pagination button:first-child {
+.pagination .page-buttons button:first-child {
   margin-right: 15px;
 }

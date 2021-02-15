@@ -31,16 +31,16 @@ export const ResidentContainer = ({ url }) => {
         }
     }, [character])
 
-    const { name, image, status, origin, total_episode } = characterData
+    const
+        { name, image, status, origin, total_episode } = characterData
+
     return (
-        <div className="card">
-            <ResidentInfo
-                name={name}
-                image={image}
-                status={status}
-                origin={origin}
-                episodes={total_episode}
-            />
-        </div>
+        <ResidentInfo
+            name={name}
+            image={image}
+            status={status}
+            origin={origin}
+            episodes={total_episode}
+        />
     )
 }
