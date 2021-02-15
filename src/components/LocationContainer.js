@@ -55,7 +55,7 @@ export const LocationContainer = ({ id }) => {
             <LocationInfo
                 name={name}
                 type={type}
-                dimesion={dimension}
+                dimension={dimension}
                 total_residents={total_residents}
                 message={message}
             />
